@@ -14,30 +14,58 @@ import NavBar from "./Components/NavBar";
 import ParaOne from "./Components/ParaOne";
 import LinkIcon from "./Components/LinkIcon";
 import GithubIcon from "./Components/GithubIcon";
-
-function openGitHub() {
-  window.location = `https://github.com/bitsacm`;
-}
-
-function openLiteCode() {
-  window.location = `https://litecode.bitsacm.in/`;
-}
+// import { a } from "react-router-dom";
 
 function Projects() {
   window.scrollTo(0, 0);
 
-  const main = [],
-    projects = [];
-
-  for (let a = 0; a < 9; a++) {
-    main[a] = {
+  const main = [
+    {
       topic: "Software Development",
+      link: "https://litecode.bitsacm.in/",
+      github: "https://github.com/bitsacm",
       project: "Litecode",
-      data: "Pariatur do nisi consectetur quis do culpa laborum voluptate ad consequat nostrud fugiat labore mollit. Sit esse dolor occaecat reprehenderit laboris.",
-    };
-  }
+      data: "LeetCode Premium is one of the best resources for practicing questions and attempting mock interviews. Unfortunately, it is also obscenely expensive! Litecode allows you to discover other BITSians willing to share a LeetCode premium subscription.",
+    },
+    {
+      topic: "Software Development",
+      link: "https://github.com/bitsacm/Radar",
+      github: "https://github.com/bitsacm/Radar",
+      project: "Radar",
+      data: "A cross-platform mobile Flutter application, here you can ask for help from nearby strangers anonymously. It was developed keeping in mind the setting of a typical University. However, this can easily be extended to include other scenarios as well.",
+    },
+    {
+      topic: "Software Development",
+      link: "https://github.com/bitsacm/ps1data",
+      github: "https://github.com/bitsacm/ps1data",
+      project: "PS-1 Data",
+      data: "Pretty UI to make getting details about PS1 stations easy! Developed and maintained by BITS ACM.",
+    },
+    {
+      topic: "Software Development",
+      link: "https://acm-bluff.herokuapp.com/",
+      github: "https://github.com/bitsacm/bluff",
+      project: "Bluff",
+      data: "Open for all, learn as you contribute project for building an online multiplayer game of Bluff maintained by BITS ACM.",
+    },
+    {
+      topic: "Software Development",
+      link: "https://github.com/bitsacm/Checkmate2017",
+      github: "https://github.com/bitsacm/Checkmate2017",
+      project: "CheckMate",
+      data: "Checkmate 2017 - A bi-annual event by BITS-ACM",
+    },
+    {
+      topic: "Software Development",
+      link: "https://github.com/bitsacm/SMS-18",
+      github: "https://github.com/bitsacm/SMS-18",
+      project: "SMS",
+      data: "Stock Market Simulation 2018 for APOGEE 2018",
+    },
+  ];
+  const projects = [];
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < main.length; i++) {
     projects[i] = (
       <VStack
         p={4}
@@ -62,18 +90,22 @@ function Projects() {
           {main[i].data}
         </Text>
         <HStack spacing={4}>
-          <HStack cursor="pointer" onClick={openGitHub}>
-            <GithubIcon />
-            <Text fontSize="sm" fontWeight="700" color="#7D7D7D">
-              GitHub
-            </Text>
-          </HStack>
-          <HStack cursor="pointer" onClick={openLiteCode}>
-            <LinkIcon />
-            <Text fontSize="sm" fontWeight="700" color="#7D7D7D">
-              Visit Link
-            </Text>
-          </HStack>
+          <a target="_blank" rel="noreferrer" href={main[i].github}>
+            <HStack cursor="pointer">
+              <GithubIcon />
+              <Text fontSize="sm" fontWeight="700" color="#7D7D7D">
+                GitHub
+              </Text>
+            </HStack>
+          </a>
+          <a target="_blank" rel="noreferrer" href={main[i].link}>
+            <HStack cursor="pointer">
+              <LinkIcon />
+              <Text fontSize="sm" fontWeight="700" color="#7D7D7D">
+                Website
+              </Text>
+            </HStack>
+          </a>
         </HStack>
       </VStack>
     );

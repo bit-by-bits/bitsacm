@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Image, Flex, HStack, Spacer, Text } from "@chakra-ui/react";
+import { Image, Flex, HStack, Spacer } from "@chakra-ui/react";
 
 function NavBar(props) {
   return (

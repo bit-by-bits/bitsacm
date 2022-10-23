@@ -13,27 +13,24 @@ import Footer from "./Components/Footer";
 import NavBar from "./Components/NavBar";
 import ParaOne from "./Components/ParaOne";
 import LinkIcon from "./Components/LinkIcon";
-
-function openEvent() {
-  window.location = `https://icpc.global/`;
-}
+import { Link } from "react-router-dom";
 
 function Events() {
   window.scrollTo(0, 0);
 
-  const main = [],
-    future = [],
+  const main = [
+    {
+      date: "Not Decided",
+      // link: "http://localhost:3000/recruitments",
+      event: "2022 Recruitment",
+      data: "Pariatur do nisi consectetur quis do culpa laborum voluptate ad consequat nostrud fugiat labore mollit. Sit esse dolor occaecat reprehenderit laboris.",
+    },
+  ];
+
+  const future = [],
     past = [];
 
-  for (let a = 0; a < 9; a++) {
-    main[a] = {
-      date: "24th July, 2022",
-      event: "Hackathon",
-      data: "Pariatur do nisi consectetur quis do culpa laborum voluptate ad consequat nostrud fugiat labore mollit. Sit esse dolor occaecat reprehenderit laboris.",
-    };
-  }
-
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 1; i++) {
     future[i] = (
       <VStack
         p={4}
@@ -57,17 +54,19 @@ function Events() {
         <Text fontSize="sm" colot="#595959">
           {main[i].data}
         </Text>
-        <HStack onClick={openEvent} cursor="pointer">
-          <LinkIcon />
-          <Text fontSize="sm" fontWeight="700" color="#7D7D7D">
-            Register Here
-          </Text>
-        </HStack>
+        <Link to={`/recruitments`}>
+          <HStack cursor="pointer">
+            <LinkIcon />
+            <Text fontSize="sm" fontWeight="700" color="#7D7D7D">
+              Register Here
+            </Text>
+          </HStack>
+        </Link>
       </VStack>
     );
   }
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 0; i++) {
     past[i] = (
       <VStack
         p={4}
@@ -91,12 +90,14 @@ function Events() {
         <Text fontSize="sm" colot="#595959">
           {main[i].data}
         </Text>
-        <HStack onClick={openEvent} cursor="pointer">
-          <LinkIcon />
-          <Text fontSize="sm" fontWeight="700" color="#7D7D7D">
-            Register Here
-          </Text>
-        </HStack>
+        <Link to={`/recruitments`}>
+          <HStack cursor="pointer">
+            <LinkIcon />
+            <Text fontSize="sm" fontWeight="700" color="#7D7D7D">
+              Register Here
+            </Text>
+          </HStack>
+        </Link>
       </VStack>
     );
   }
