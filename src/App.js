@@ -12,7 +12,8 @@ function App() {
   const heading = `<acm bits pilani />`;
   const text = `a group of nerds and tech enthusiasts who push the limits of software development, artificial intelligence, theoretical computing, design and research.`;
 
-  const [isLargerThan1400] = useMediaQuery("(min-width: 1400px)");
+  const [isLargerThan1400] = useMediaQuery("(min-width: 1400px)"),
+    [isSmallerThan750] = useMediaQuery("(max-width: 750px)");
 
   return (
     <Box p={3} height="100vh" width="100vw" overflow="hidden">
@@ -36,17 +37,19 @@ function App() {
           <Text
             fontFamily="Arial"
             fontWeight="700"
-            fontSize="7xl"
+            fontSize={isSmallerThan750 ? "4xl" : "7xl"}
             letterSpacing="-4px"
           >
             {heading}
           </Text>
 
           <Text
-            width={isLargerThan1400 ? "46vw" : "50vw"}
+            width={
+              isLargerThan1400 ? "46vw" : isSmallerThan750 ? "80vw" : "60vw"
+            }
             textAlign="center"
             fontWeight="600"
-            fontSize={isLargerThan1400 ? "2xl" : "xl"}
+            fontSize={isLargerThan1400 ? "2xl" : isSmallerThan750 ? "lg" : "xl"}
             letterSpacing="-0.5px"
           >
             {text}

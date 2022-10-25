@@ -11,11 +11,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Footer() {
-  const [isLargerThan1100] = useMediaQuery("(min-width: 1100px)");
+  const [isLargerThan1100] = useMediaQuery("(min-width: 1100px)"),
+    [isSmallerThan950] = useMediaQuery("(max-width: 950px)"),
+    [isSmallerThan500] = useMediaQuery("(max-width: 500px)");
 
   return (
-    <VStack mt={20}>
-      <Flex width={isLargerThan1100 ? "86vw" : "92vw"}>
+    <VStack mt={isSmallerThan950 ? 8 : 20}>
+      <Flex
+        my={isSmallerThan500 ? "-2rem" : 0}
+        transform={isSmallerThan500 ? "scale(0.75)" : "scale(1.0)"}
+        direction={isSmallerThan950 ? "column" : "row"}
+        align="center"
+        gap={isSmallerThan950 ? 8 : 0}
+        width={isLargerThan1100 ? "86vw" : "92vw"}
+      >
         <Image src="logoBig.svg" />
         <Spacer />
 
@@ -33,7 +42,7 @@ function Footer() {
             <Link to={`/events`}>Events</Link>
             <Link to={`/projects`}>Projects</Link>
             <Link to={`/SIGs`}>SIGs</Link>
-            <Link to={`/about`}>Partner with us</Link>
+            <Link to={`/about`}>Partner</Link>
           </VStack>
 
           <VStack align="flex-start">
@@ -44,7 +53,14 @@ function Footer() {
         </HStack>
       </Flex>
 
-      <HStack mt="60px !important" fontSize="16px" fontWeight="700">
+      <HStack
+        transform={isSmallerThan500 ? "scale(0.75)" : "scale(1.0)"}
+        width="90vw"
+        justify="center"
+        mt="60px !important"
+        fontSize="16px"
+        fontWeight="700"
+      >
         <Text color="#969696">built with</Text>
         <Text color="red">❤</Text>
         <Text color="#969696">by</Text>

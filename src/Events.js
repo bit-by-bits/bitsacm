@@ -7,6 +7,7 @@ import {
   Image,
   Stack,
   Text,
+  useMediaQuery,
   VStack,
 } from "@chakra-ui/react";
 import Footer from "./Components/Footer";
@@ -17,6 +18,8 @@ import { Link } from "react-router-dom";
 
 function Events() {
   window.scrollTo(0, 0);
+  const [isSmallerThan950] = useMediaQuery("(max-width: 950px)"),
+    [isSmallerThan600] = useMediaQuery("(max-width: 600px)");
 
   const main = [
     {
@@ -30,7 +33,8 @@ function Events() {
   const future = [],
     past = [];
 
-  for (let i = 0; i < 1; i++) {
+  const future_index = 1;
+  for (let i = 0; i < future_index; i++) {
     future[i] = (
       <VStack
         p={4}
@@ -66,7 +70,7 @@ function Events() {
     );
   }
 
-  for (let i = 0; i < 0; i++) {
+  for (let i = future_index; i < main.length - future_index; i++) {
     past[i] = (
       <VStack
         p={4}
@@ -105,10 +109,10 @@ function Events() {
   return (
     <Box px={10} py={3}>
       <NavBar text="black" />
-      <Stack spacing={6} maxWidth="60vw" p={4}>
+      <Stack spacing={6} maxWidth={isSmallerThan600 ? "86vw" : "65vw"} p={4}>
         <ParaOne
-          hs="5xl"
-          bs="md"
+          hs={isSmallerThan600 ? "3xl" : "5xl"}
+          bs={isSmallerThan600 ? "sm" : "md"}
           head="Events"
           body="Pariatur do nisi consectetur quis do culpa laborum voluptate ad consequat nostrud fugiat labore mollit. Sit esse dolor occaecat reprehenderit laboris. Aute in fugiat magna eu dolore Lorem dolore tempor velit dolor culpa commodo. Officia pariatur aute deserunt Lorem commodo voluptate adipisicin."
         />
@@ -118,7 +122,7 @@ function Events() {
         <Text
           mt="50px !important"
           mb="20px !important"
-          fontSize="3xl"
+          fontSize={isSmallerThan600 ? "2xl" : "3xl"}
           fontWeight="700"
           color="#606060"
         >
@@ -127,8 +131,20 @@ function Events() {
 
         <Grid
           gap="1rem"
-          templateRows="repeat(1, 1fr)"
-          templateColumns="repeat(3,1fr)"
+          templateRows={
+            isSmallerThan950
+              ? isSmallerThan600
+                ? "repeat(1, 1fr)"
+                : "repeat(1, 1fr)"
+              : "repeat(1, 1fr)"
+          }
+          templateColumns={
+            isSmallerThan950
+              ? isSmallerThan600
+                ? "repeat(1, 1fr)"
+                : "repeat(2, 1fr)"
+              : "repeat(3, 1fr)"
+          }
         >
           {future}
         </Grid>
@@ -138,7 +154,7 @@ function Events() {
         <Text
           mt="50px !important"
           mb="20px !important"
-          fontSize="3xl"
+          fontSize={isSmallerThan600 ? "2xl" : "3xl"}
           fontWeight="700"
           color="#606060"
         >
@@ -147,8 +163,20 @@ function Events() {
 
         <Grid
           gap="1rem"
-          templateRows="repeat(2, 1fr)"
-          templateColumns="repeat(3,1fr)"
+          templateRows={
+            isSmallerThan950
+              ? isSmallerThan600
+                ? "repeat(6, 1fr)"
+                : "repeat(3, 1fr)"
+              : "repeat(2, 1fr)"
+          }
+          templateColumns={
+            isSmallerThan950
+              ? isSmallerThan600
+                ? "repeat(1, 1fr)"
+                : "repeat(2, 1fr)"
+              : "repeat(3, 1fr)"
+          }
         >
           {past}
         </Grid>

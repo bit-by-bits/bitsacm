@@ -8,16 +8,18 @@ import {
   Stack,
   Text,
   VStack,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import Footer from "./Components/Footer";
 import NavBar from "./Components/NavBar";
 import ParaOne from "./Components/ParaOne";
 import LinkIcon from "./Components/LinkIcon";
 import GithubIcon from "./Components/GithubIcon";
-// import { a } from "react-router-dom";
 
 function Projects() {
   window.scrollTo(0, 0);
+  const [isSmallerThan950] = useMediaQuery("(max-width: 950px)"),
+    [isSmallerThan600] = useMediaQuery("(max-width: 600px)");
 
   const main = [
     {
@@ -63,8 +65,8 @@ function Projects() {
       data: "Stock Market Simulation 2018 for APOGEE 2018",
     },
   ];
-  const projects = [];
 
+  const projects = [];
   for (let i = 0; i < main.length; i++) {
     projects[i] = (
       <VStack
@@ -114,10 +116,10 @@ function Projects() {
   return (
     <Box px={10} py={3}>
       <NavBar text="black" />
-      <Stack spacing={6} maxWidth="60vw" p={4}>
+      <Stack spacing={6} maxWidth={isSmallerThan600 ? "86vw" : "65vw"} p={4}>
         <ParaOne
-          hs="5xl"
-          bs="md"
+          hs={isSmallerThan600 ? "3xl" : "5xl"}
+          bs={isSmallerThan600 ? "sm" : "md"}
           head="Projects"
           body="Pariatur do nisi consectetur quis do culpa laborum voluptate ad consequat nostrud fugiat labore mollit. Sit esse dolor occaecat reprehenderit laboris. Aute in fugiat magna eu dolore Lorem dolore tempor velit dolor culpa commodo. Officia pariatur aute deserunt Lorem commodo voluptate adipisicin."
         />
@@ -125,8 +127,20 @@ function Projects() {
 
       <Grid
         gap="1rem"
-        templateRows="repeat(2, 1fr)"
-        templateColumns="repeat(3,1fr)"
+        templateRows={
+          isSmallerThan950
+            ? isSmallerThan600
+              ? "repeat(6, 1fr)"
+              : "repeat(3, 1fr)"
+            : "repeat(2, 1fr)"
+        }
+        templateColumns={
+          isSmallerThan950
+            ? isSmallerThan600
+              ? "repeat(1, 1fr)"
+              : "repeat(2, 1fr)"
+            : "repeat(3, 1fr)"
+        }
       >
         {projects}
       </Grid>
